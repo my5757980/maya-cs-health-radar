@@ -1,0 +1,214 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Maya — CS Health Radar</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font: 400 18px/1.55 -apple-system, "Segoe UI", system-ui, Arial, sans-serif;
+    color: #0f172a; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .s {
+    width: 1280px; height: 720px; padding: 68px 84px; position: relative;
+    page-break-after: always; break-after: page; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center;
+    background: #fff;
+  }
+  .s:last-child { page-break-after: auto; }
+  .num { position: absolute; right: 44px; bottom: 34px; font-size: 14px; color: #94a3b8; letter-spacing:.06em }
+  .kicker { font-size: 15px; letter-spacing: .16em; text-transform: uppercase; color: #4f46e5; font-weight: 700; margin-bottom: 20px; }
+  h1 { font-size: 74px; line-height: 1.02; letter-spacing: -.028em; font-weight: 800; }
+  h2 { font-size: 46px; line-height: 1.12; letter-spacing: -.022em; font-weight: 800; margin-bottom: 26px; }
+  p.lead { font-size: 25px; line-height: 1.5; color: #334155; max-width: 1020px; }
+  .big { font-size: 128px; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+  .red { color: #dc2626 } .amber { color: #d97706 } .green { color: #16a34a } .ink { color:#0f172a } .mute { color:#64748b }
+  .row { display: flex; gap: 26px; margin-top: 34px; }
+  .card { flex: 1; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px 24px; background: #f8fafc; }
+  .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+  .card p { font-size: 16.5px; color: #475569; line-height: 1.5; }
+  .mono { font-family: "SF Mono", Consolas, "Roboto Mono", monospace; }
+  .code { background: #0f172a; color: #e2e8f0; border-radius: 14px; padding: 26px 30px;
+          font-family: "SF Mono", Consolas, monospace; font-size: 17.5px; line-height: 1.75; margin-top: 26px; }
+  .code .k { color: #7dd3fc } .code .c { color: #64748b } .code .v { color: #fca5a5 }
+  ul { list-style: none; margin-top: 26px; }
+  li { font-size: 21px; line-height: 1.5; margin-bottom: 17px; padding-left: 34px; position: relative; color:#334155 }
+  li::before { content: "→"; position: absolute; left: 0; color: #4f46e5; font-weight: 700; }
+  .cover { background: linear-gradient(150deg,#0b1220 0%, #16224a 55%, #1e2f6b 100%); color: #fff; }
+  .cover h1 { color: #fff }
+  .cover .lead { color: #b6c2e2; margin-top: 22px; font-size: 26px }
+  .cover .kicker { color: #7dd3fc }
+  .badge { display:inline-block; border:1px solid rgba(255,255,255,.28); border-radius:999px;
+           padding:9px 20px; font-size:16px; color:#dbe4ff; margin-top:36px }
+  table { width: 100%; border-collapse: collapse; margin-top: 26px; font-size: 18px; }
+  th { text-align: left; font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase; color: #64748b; padding-bottom: 12px; border-bottom: 1px solid #e2e8f0; font-weight:700 }
+  td { padding: 13px 0; border-bottom: 1px solid #f1f5f9; }
+  td.n { text-align: right; font-family: "SF Mono", Consolas, monospace; font-weight: 700; }
+  .pill { display:inline-block; padding:4px 13px; border-radius:999px; font-size:14px; font-weight:700 }
+  .pc { background:#fee2e2; color:#b91c1c } .pw { background:#fef3c7; color:#a16207 } .ph { background:#dcfce7; color:#15803d }
+  .flow { display:flex; align-items:center; gap:12px; margin-top:38px; flex-wrap:nowrap }
+  .step { flex:1; border:1px solid #e2e8f0; border-radius:12px; padding:18px 12px; text-align:center; background:#fff }
+  .step b { display:block; font-size:13px; color:#4f46e5; letter-spacing:.1em; margin-bottom:8px }
+  .step span { font-size:15px; color:#334155; line-height:1.35; display:block }
+  .arr { color:#cbd5e1; font-size:22px; font-weight:700 }
+  .foot { position:absolute; left:84px; bottom:34px; font-size:15px; color:#94a3b8 }
+</style>
+
+<!-- 1 -->
+<section class="s cover">
+  <div class="kicker">AI Factory · Native.builder Hackathon 2026</div>
+  <h1>Maya —<br>CS Health Radar</h1>
+  <p class="lead">A customer success manager owns 100 accounts.<br>She can actively manage 15. This agent handles the other 85.</p>
+  <div class="badge mono">eonhw2qcm2ajxbmcp3jdtvopw.nativelyai.app</div>
+</section>
+
+<!-- 2 -->
+<section class="s">
+  <div class="kicker">The problem</div>
+  <h2>Churn is decided in the accounts<br>nobody has time to look at.</h2>
+  <div style="display:flex;align-items:baseline;gap:28px;margin-top:14px">
+    <div><div class="big ink">15</div><p class="mute" style="font-size:19px;margin-top:6px">managed per week</p></div>
+    <div style="font-size:56px;color:#cbd5e1;font-weight:300">/</div>
+    <div><div class="big red">85</div><p class="mute" style="font-size:19px;margin-top:6px">left unwatched</p></div>
+  </div>
+  <p class="lead" style="margin-top:34px">The signals are already there — a P1 ticket, a usage collapse, a late invoice,
+  a detractor survey. Nobody has 33 hours a week to read them.</p>
+  <div class="num">2</div>
+</section>
+
+<!-- 3 -->
+<section class="s">
+  <div class="kicker">Why it stays unsolved</div>
+  <h2>Three failures compound.</h2>
+  <div class="row">
+    <div class="card"><h3>Signals are fragmented</h3><p>Evidence sits in the support inbox, product analytics, the CRM and billing. Assembling one account's picture by hand takes ~20 minutes.</p></div>
+    <div class="card"><h3>Detection is calendar-driven</h3><p>Risk is discovered when a renewal date approaches. A problem with a five-month runway gets a 30-day response window.</p></div>
+    <div class="card"><h3>Knowing is not acting</h3><p>A credible, context-specific outreach takes 15–25 minutes to write. At 6pm the at-risk account gets a generic check-in — or nothing.</p></div>
+  </div>
+  <div class="num">3</div>
+</section>
+
+<!-- 4 -->
+<section class="s">
+  <div class="kicker">The target user</div>
+  <h2>One person. Named, not generic.</h2>
+  <p class="lead">An individual-contributor CSM at a growth-stage B2B SaaS company — 30–150 employees,
+  $3M–$20M ARR. Accounts are $8k–$60k ACV: too small for a named account team, too large to ignore.
+  She reports on Net Revenue Retention and is paid partly on renewals, so churn is personally expensive.
+  She is fluent in SaaS tools, but will not write SQL and will not configure a rules engine.</p>
+  <p class="lead" style="margin-top:26px;color:#64748b;font-size:21px"><b>Not for:</b> enterprise CSMs with named account teams · support agents ·
+  VP-level portfolio reporting · PLG companies with no CSM function.</p>
+  <div class="num">4</div>
+</section>
+
+<!-- 5 -->
+<section class="s">
+  <div class="kicker">The one workflow</div>
+  <h2>Signal to logged human decision.</h2>
+  <div class="flow">
+    <div class="step"><b>01</b><span>Signal recorded</span></div><div class="arr">›</div>
+    <div class="step"><b>02</b><span>Health recomputed</span></div><div class="arr">›</div>
+    <div class="step"><b>03</b><span>Grounded risk explanation</span></div><div class="arr">›</div>
+    <div class="step"><b>04</b><span>Action + drafted message</span></div><div class="arr">›</div>
+    <div class="step"><b>05</b><span>Human approves</span></div><div class="arr">›</div>
+    <div class="step"><b>06</b><span>Written to timeline</span></div>
+  </div>
+  <p class="lead" style="margin-top:40px">Every screen and every table in the product serves one of these six steps. Nothing else was built.</p>
+  <div class="num">5</div>
+</section>
+
+<!-- 6 -->
+<section class="s">
+  <div class="kicker">The decision worth explaining</div>
+  <h2>The score is code. Never a model.</h2>
+  <div class="code">
+<span class="c">// pure, synchronous, no network call, no AI</span><br>
+penalty(signal) = <span class="k">base_weight</span>[type] × <span class="k">severity_mult</span>[severity] × <span class="k">decay</span>(ageDays)<br>
+decay(ageDays)&nbsp; = max(0, 1 − ageDays / 90)<br>
+score&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= clamp(round(100 − Σ penalty), 0, 100)<br>
+tier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= ≥70 <span class="v">healthy</span> · ≥40 <span class="v">watch</span> · else <span class="v">critical</span>
+  </div>
+  <p class="lead" style="margin-top:28px">The same signals always produce the same score — so cause and effect can be
+  <b>verified live</b> rather than taken on trust. Every account page shows the full per-signal breakdown behind its number.</p>
+  <div class="num">6</div>
+</section>
+
+<!-- 7 -->
+<section class="s">
+  <div class="kicker">Verified on the live app</div>
+  <h2>Blue Ridge Partners — why 27?</h2>
+  <table>
+    <tr><th>Signal</th><th>Severity</th><th>Age</th><th style="text-align:right">Penalty</th></tr>
+    <tr><td>Payment issue</td><td><span class="pill pc">critical</span></td><td class="mute">2.6 d</td><td class="n red">−34.01</td></tr>
+    <tr><td>Support ticket</td><td><span class="pill pc">high</span></td><td class="mute">4.6 d</td><td class="n red">−19.94</td></tr>
+    <tr><td>Usage drop</td><td><span class="pill pw">medium</span></td><td class="mute">8.6 d</td><td class="n amber">−13.57</td></tr>
+    <tr><td>NPS response</td><td><span class="pill pw">low</span></td><td class="mute">12.6 d</td><td class="n amber">−5.59</td></tr>
+    <tr><td colspan="3" style="font-weight:700;border-bottom:none;padding-top:18px">100 − 73.11</td><td class="n" style="font-size:26px;border-bottom:none;padding-top:18px">27</td></tr>
+  </table>
+  <p class="lead" style="margin-top:22px;font-size:21px">Not an opinion. Arithmetic a judge can check on screen.</p>
+  <div class="num">7</div>
+</section>
+
+<!-- 8 -->
+<section class="s">
+  <div class="kicker">Where the model earns its place</div>
+  <h2>Grounding is enforced in code<br>and schema — not in the prompt.</h2>
+  <ul>
+    <li>Every explanation must cite <b>≥ 2 real signals</b> — a Postgres <span class="mono">CHECK</span> constraint makes an ungrounded recommendation impossible to save.</li>
+    <li>Returned citation ids are validated server-side as a <b>subset of the context actually supplied</b>. An invented citation is rejected outright, not filtered out.</li>
+    <li>Actions are bounded to a <b>six-value Postgres enum</b>. Out-of-taxonomy output retries once, then falls back to the driver default at low confidence.</li>
+    <li><span class="mono">signals</span> grants <b>SELECT and INSERT only</b>. Evidence is immutable — which is what makes the audit timeline trustworthy.</li>
+  </ul>
+  <div class="num">8</div>
+</section>
+
+<!-- 9 -->
+<section class="s">
+  <div class="kicker">The human boundary</div>
+  <h2>Nothing is ever sent.</h2>
+  <p class="lead">Approving records the decision and the final message text. It does not transmit anything.</p>
+  <p class="lead" style="margin-top:26px">There is <b>no email client, no SMTP configuration and no outbound sender anywhere in the codebase</b> —
+  the guarantee is enforced by absence, not by a flag that could be flipped. The UI says so plainly, on every draft.</p>
+  <p class="lead" style="margin-top:30px;color:#64748b;font-size:21px">This is what makes it deployable in a real CS organisation on day one:
+  the agent never touches a customer without a person signing off.</p>
+  <div class="num">9</div>
+</section>
+
+<!-- 10 -->
+<section class="s">
+  <div class="kicker">How it was built</div>
+  <h2>native.builder, end to end.</h2>
+  <div class="row">
+    <div class="card"><h3>Product Architect</h3><p>Planned the project from a written brief — four screens, seven entities, a six-step workflow — and interrogated it with clarifying questions before any code was generated.</p></div>
+    <div class="card"><h3>Builder agent</h3><p>Generated the React front end, the full Postgres schema with row-level security, the seed dataset, and three Supabase Edge Functions calling Claude.</p></div>
+    <div class="card"><h3>QA agent</h3><p>Independently verified the build and caught two real defects — including a broken demo-user auth path silently returning zero rows through RLS.</p></div>
+  </div>
+  <p class="lead" style="margin-top:32px;font-size:20px"><b>Stack:</b> Vite + React + Tailwind · Supabase (Postgres, Auth, Edge Functions, Secrets) ·
+  AI/ML API → <span class="mono">anthropic/claude-opus-5</span> for the reasoning path, <span class="mono">anthropic/claude-sonnet-5</span> for enrichment.</p>
+  <div class="num">10</div>
+</section>
+
+<!-- 11 -->
+<section class="s">
+  <div class="kicker">Impact</div>
+  <h2>20 minutes → under 30 seconds.</h2>
+  <p class="lead">That is the time to assess one account's risk: from opening four tools, reading recent history and
+  forming a judgement, to a single ranked view with a grounded explanation already written.</p>
+  <p class="lead" style="margin-top:26px;color:#64748b;font-size:20px">The 20-minute baseline is stated as an assumption, not a measurement.
+  We are <b>not</b> claiming a churn-reduction percentage — we have not run the experiment that would justify one.</p>
+  <div class="row" style="margin-top:30px">
+    <div class="card"><h3>Reproducible</h3><p>Deterministic scoring. Same signals, same number, every time.</p></div>
+    <div class="card"><h3>Auditable</h3><p>Every score shows its per-signal breakdown. Every decision lands on a timeline.</p></div>
+    <div class="card"><h3>Safe by construction</h3><p>Human approval required. No send path exists in the code.</p></div>
+  </div>
+  <div class="num">11</div>
+</section>
+
+<!-- 12 -->
+<section class="s cover">
+  <div class="kicker">Try it</div>
+  <h1 style="font-size:56px">Maya — CS Health Radar</h1>
+  <p class="lead" style="font-size:23px;margin-top:20px">Ten seeded accounts. Open the top one and read why it is at risk.<br>
+  Then add a signal to a healthy account and watch the score move.</p>
+  <div class="badge mono" style="font-size:19px;padding:14px 26px">https://eonhw2qcm2ajxbmcp3jdtvopw.nativelyai.app</div>
+  <p style="color:#8899c4;font-size:16px;margin-top:34px">Built with native.builder · Supabase · Claude via AI/ML API</p>
+</section>
