@@ -108,3 +108,26 @@ npm run dev
 You will need your own Supabase project and an `AIML_API_KEY` secret for the Edge Functions.
 Schema and seed data live in the Supabase project, not in this repo — see `data-model.md` for the
 full schema, constraints and RLS policies.
+
+## Deploying
+
+There is no separate backend server to host. The frontend is a static Vite build; everything
+server-side — Postgres, Auth, and the three Edge Functions — already runs on Supabase.
+
+So a single static host is all that is needed. `vercel.json` sets the Vite preset and a SPA
+rewrite, so `/account/:id` survives a direct link or a refresh instead of 404ing:
+
+```json
+{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+```
+
+Point any static host at the repo, or:
+
+```bash
+npm run build   # -> dist/
+```
+
+Nothing to configure at deploy time: the Supabase URL and **anon** key are compiled into the
+bundle, which is what that key is designed for — row-level security is what actually protects the
+data, not key secrecy. The `AIML_API_KEY` never reaches the browser; it lives in Supabase Secrets
+and is read only inside the Edge Functions.
