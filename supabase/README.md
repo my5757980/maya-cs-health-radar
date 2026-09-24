@@ -40,9 +40,24 @@ RLS on all 7); guarantees G1–G7 all PASS.
 differ, **this migration is what shipped and what the app talks to**:
 
 - The spec scopes every row per user (`accounts.user_id`, RLS `user_id = auth.uid()`). The shipped
-  schema does **not**: `accounts` has no `user_id`, and RLS is `auth.role() = 'authenticated'`, i.e.
-  any signed-in user sees all accounts. This matches the app, which signs in one shared demo user.
-- Known gap, left exactly as shipped (not silently "fixed" here): the `authenticated` role may
-  `UPDATE` **any** recommendation or outreach draft (policies `USING (true)`). The database does not
-  enforce the `pending → decided` transition; only the app's flow does. Tightening this is a schema
-  change and a product decision, so it is called out rather than made quietly.
+  schema does **not**: `accounts` has no `user_id`, and RLS is `auth.role() = 'authenticated'`.
+- The `authenticated` role may `UPDATE` **any** recommendation or outreach draft (policies
+  `USING (true)`). The database does not enforce the `pending → decided` transition; only the app's
+  flow does.
+
+## Who can see and change what
+
+Maya ships as **one shared demo workspace**. On load, `src/App.tsx` signs every visitor in as the same
+demo user (`maya@example.com`, whose password is in the client on purpose), and if that fails, as an
+anonymous Supabase user. Both sessions have the `authenticated` role, so every visitor can read every
+account, add signals and decisions, and update any recommendation or draft.
+
+That is intended for a public demo of fictional accounts. It is **not** safe for real customer data.
+Before any goes in:
+
+1. Give `accounts` an owner: `owner_id uuid not null default auth.uid()`.
+2. Scope every policy through it: `owner_id = auth.uid()` on `accounts`, and on each child table
+   `exists (select 1 from accounts a where a.id = account_id and a.owner_id = auth.uid())`. Replace
+   the `USING (true)` update policies the same way, and restrict updates to `status = 'pending'` rows.
+3. Turn off anonymous sign-ins in the Supabase project and remove the demo credentials from
+   `src/App.tsx` in favour of a real sign-in.

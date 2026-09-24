@@ -70,6 +70,11 @@ is enforced by absence, not by a flag.
 10 fictional accounts — 2 critical, 3 watch, 1 stale, 4 healthy — labeled as demo data in the UI.
 No real customer data.
 
+**One shared workspace.** The app signs every visitor in as the same demo user (or anonymously), so
+everyone sees and can change the same data. That is right for a public demo of fictional accounts and
+wrong for real customers: see [`supabase/README.md`](supabase/README.md#who-can-see-and-change-what)
+for what must change first.
+
 **Live demo moment:** *Acme Dashboard* is seeded to score exactly **72 (healthy)**. Adding one
 critical support ticket drops it to **42 (watch)** — a ~30 point swing that recomputes the score,
 flips the tier, re-ranks the account, and regenerates the assessment citing the signal created
